@@ -50,8 +50,13 @@ bool safetyCheck(int xPlace, int yPlace, char badPiece)
             return false;
         }
     }
+    return true;
 }
-
+bool rookCheck(xIter, yIter, char[][] &aBoard, char badPiece)
+{
+    int xPlace, yPlace;
+    for ()
+}
 bool knightCheck(xIter, yIter, char[][] &aBoard, char badPiece)
 {
     int xPlace, yPlace;
@@ -61,21 +66,15 @@ bool knightCheck(xIter, yIter, char[][] &aBoard, char badPiece)
         {
             xPlace = xIter + adderIter;
             yPlace = yIter + singleIter;
-            if (xPlace < 8 && xPlace > -1 && yPlace < 8 && yPlace > -1)
+            if (!safetyCheck(xPlace, yPlace, badPiece))
             {
-                if (aBoard[xPlace][yPlace] == badPiece)
-                {
-                    return false;
-                }
+                return false;
             }
             xPlace = xIter + singleIter;
             yPlace = yIter + adderIter;
-            if (xPlace < 8 && xPlace > -1 && yPlace < 8 && yPlace > -1)
+            if (!safetyCheck(xPlace, yPlace, badPiece))
             {
-                if (aBoard[xPlace][yPlace] == badPiece)
-                {
-                    return false;
-                }
+                return false;
             }
         }
     }
@@ -116,7 +115,7 @@ bool board::checkLegality(char[][] &aBoard = this->boardState, bool whiteMove = 
             {
                 if (aBoard[xIter][yIter] == 'K')
                 {
-                    
+
                     // bishop / queen checking
                     counterX = 1;
                     while (counterX + xIter < 8 && counterX + yIter < 8)
